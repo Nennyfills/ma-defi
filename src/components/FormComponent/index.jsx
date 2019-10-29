@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 
 import Calender from '../Calendar';
 
-
 const FormComponent = ({
   onSubmit,
   firstNameError,
