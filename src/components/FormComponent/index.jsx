@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 
 import Calender from '../Calendar';
 
-
 const FormComponent = ({
   onSubmit,
   firstNameError,
@@ -55,7 +54,7 @@ const FormComponent = ({
               onChange={formHandleChange}
               size="large"
               type="number"
-              prefix={<Icon type="user" />}
+              prefix={<Icon type="number" />}
               placeholder="Age"
             />,
           )}
@@ -69,9 +68,10 @@ const FormComponent = ({
     </Row>
     <Form.Item>
       <Input
+        size="large"
         name="hobby"
         onChange={formHandleChange}
-        placeholder="Add a Hobby"
+        placeholder="Add your hobby"
       />
     </Form.Item>
     <Form.Item>
@@ -108,5 +108,4 @@ FormComponent.defaultProps = {
   formhandleDateChange: () => 'Form',
   loading: false,
 };
-
 export default FormComponent;
