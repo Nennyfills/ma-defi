@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Form } from 'antd';
@@ -11,13 +12,15 @@ const Home = ({ form }) => {
   const [updateData, setUpdateUserData] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const { validateFields, getFieldDecorator } = form;
+  const { validateFields, getFieldDecorator, resetFields } = form;
   const brandDecorator = (value) => getFieldDecorator(value, {
     rules: [{ required: true, message: `${value} is required!` }],
   });
+
   const handleChange = (event) => {
     setUserData({ ...userData, [event.target.name]: event.target.value });
   };
+
   const handleDateChange = (value) => {
     const date = [];
     date.push(value);
@@ -28,17 +31,23 @@ const Home = ({ form }) => {
       date: newDate.toString().split` `.slice(0, 4).join` `,
     });
   };
-  const handleSubmit = (e) => {
-    e.preventDefault();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
     setLoading(true);
     validateFields((err) => {
+      if (err) {
+        setLoading(false);
+      }
       if (!err) {
         setLoading(false);
         updateData.push({ ...userData, key: userData.age + userData.date });
         setUpdateUserData([...updateData]);
+        resetFields();
       }
     });
   };
+
   return (
     <div className="home-container">
       <div className="home-container_inner">

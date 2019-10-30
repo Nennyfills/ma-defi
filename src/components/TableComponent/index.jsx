@@ -16,7 +16,7 @@ const columns = [
     dataIndex: 'age',
   },
   {
-    title: 'DOB',
+    title: 'Birthday',
     dataIndex: 'date',
   },
   {
@@ -31,10 +31,7 @@ const TableComponent = ({ data }) => (
       <div style={{ marginBottom: 16 }}>
         <span style={{ marginLeft: 8 }} />
       </div>
-      <Table
-        columns={columns}
-        dataSource={data}
-      />
+      <Table columns={columns} dataSource={data} />
     </Col>
   </Row>
 );
