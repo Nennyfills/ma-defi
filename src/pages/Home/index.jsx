@@ -1,52 +1,22 @@
-/* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Form } from 'antd';
 
+import useFormData from '../../utils/customizedHooks';
 import FormComponent from '../../components/FormComponent';
 import TableComponent from '../../components/TableComponent';
 import './home.scss';
 
 const Home = ({ form }) => {
-  const [userData, setUserData] = useState({});
-  const [updateData, setUpdateUserData] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  const { validateFields, getFieldDecorator, resetFields } = form;
-  const brandDecorator = (value) => getFieldDecorator(value, {
-    rules: [{ required: true, message: `${value} is required!` }],
-  });
-
-  const handleChange = (event) => {
-    setUserData({ ...userData, [event.target.name]: event.target.value });
-  };
-
-  const handleDateChange = (value) => {
-    const date = [];
-    date.push(value);
-    // eslint-disable-next-line no-underscore-dangle
-    const newDate = [date[0]._d];
-    setUserData({
-      ...userData,
-      date: newDate.toString().split` `.slice(0, 4).join` `,
-    });
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setLoading(true);
-    validateFields((err) => {
-      if (err) {
-        setLoading(false);
-      }
-      if (!err) {
-        setLoading(false);
-        updateData.push({ ...userData, key: userData.age + userData.date });
-        setUpdateUserData([...updateData]);
-        resetFields();
-      }
-    });
-  };
+  const {
+    brandDecorator,
+    handleChange,
+    handleDateChange,
+    handleSubmit,
+  } = useFormData(form);
+  const formData = useSelector((state) => state.formData);
+  const { loading, data } = formData;
 
   return (
     <div className="home-container">
@@ -63,7 +33,7 @@ const Home = ({ form }) => {
         />
       </div>
       <div className="home-container_table">
-        <TableComponent data={updateData} />
+        <TableComponent data={data} />
       </div>
     </div>
   );
