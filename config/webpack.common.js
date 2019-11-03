@@ -11,8 +11,6 @@ const {
 const themeVariables = LessToJs(
   fs.readFileSync(path.join(__dirname, '../ant.less'), 'utf8').replace(/\$/ig, '@')
 );
-// console.log(themeVariables);
-
 
 module.exports = {
   entry: ['react-hot-loader/patch', './src/index.jsx'],
@@ -28,7 +26,10 @@ module.exports = {
       pages: path.resolve(__dirname, '../src/pages'),
       'react-dom': '@hot-loader/react-dom',
       scss: path.resolve(__dirname, '../src/assets/scss'),
-      assets: path.resolve(__dirname, '../src/assets')
+      assets: path.resolve(__dirname, '../src/assets'),
+      modules: path.resolve(__dirname, '../src/store/modules'),
+      store: path.resolve(__dirname, '../src/store'),
+      utils: path.resolve(__dirname, '../src/utils'),
     },
     modules: [path.resolve(__dirname, 'src'), 'node_modules']
   },
@@ -74,7 +75,6 @@ module.exports = {
             options: {
               modifyVars: themeVariables,
               javascriptEnabled: true,
-              // root: path.resolve(__dirname, './')
             }
           }
         ]
@@ -89,7 +89,6 @@ module.exports = {
         test: /\.scss$/,
         issuer: /\.less$/,
         use: {
-          // '../sassVarsToLess.js'
           loader: path.join(__dirname, '../sassVarsToLess.js')
         }
       }

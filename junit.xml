@@ -1,7 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="1" failures="0" time="17.091">
-  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2019-10-29T21:57:47" time="10.435" tests="1">
-    <testcase classname=" renders properly" name=" renders properly" time="0.02">
+<testsuites name="jest tests" tests="10" failures="0" time="32.634">
+  <testsuite name="Reducers" errors="0" failures="0" skipped="0" timestamp="2019-11-03T20:43:59" time="12.481" tests="3">
+    <testcase classname="Reducers should check if reducer is loading while getting formData" name="Reducers should check if reducer is loading while getting formData" time="0.009">
+    </testcase>
+    <testcase classname="Reducers should check if reducer is getting a users formData" name="Reducers should check if reducer is getting a users formData" time="0.001">
+    </testcase>
+    <testcase classname="Reducers should check if reducer is getting an error while receiving formData detail" name="Reducers should check if reducer is getting an error while receiving formData detail" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="Get formData action" errors="0" failures="0" skipped="0" timestamp="2019-11-03T20:43:59" time="14.181" tests="6">
+    <testcase classname="Get formData action should get form with users data " name="Get formData action should get form with users data " time="0.014">
+    </testcase>
+    <testcase classname="Get formData action should not get user form when an error have occurred" name="Get formData action should not get user form when an error have occurred" time="0.005">
+    </testcase>
+    <testcase classname="Get formData action should check if the formData loading action is been dispatched" name="Get formData action should check if the formData loading action is been dispatched" time="0">
+    </testcase>
+    <testcase classname="Get formData action should check if the formData error request action is been dispatched" name="Get formData action should check if the formData error request action is been dispatched" time="0.001">
+    </testcase>
+    <testcase classname="Get formData action should check if request user data success action is been dispatched" name="Get formData action should check if request user data success action is been dispatched" time="0.001">
+    </testcase>
+    <testcase classname="Get formData action should check if API is working well" name="Get formData action should check if API is working well" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2019-11-03T20:43:59" time="22.417" tests="1">
+    <testcase classname=" renders properly" name=" renders properly" time="0.028">
     </testcase>
   </testsuite>
 </testsuites>
